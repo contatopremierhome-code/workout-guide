@@ -21,7 +21,7 @@ export function Landing({ onStart }: LandingProps) {
         MAXIMIZE YOUR RESULTS WITH <span className="text-destructive">CLARITY AND FLEXIBILITY</span>
       </h1>
       <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-        A practical and efficient solution to maximize your results. Whether it’s Weight Loss or Muscle Gain.
+        A practical and efficient solution to maximize your results. Whether it’s <span className="text-destructive">Weight Loss</span> or <span className="text-destructive">Muscle Gain</span>.
       </p>
       
       <div className="w-full">
