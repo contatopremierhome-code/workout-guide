@@ -22,13 +22,22 @@ const avatars = [
 export function ResultsScreen({ plan }: ResultsScreenProps) {
   return (
     <div className="flex flex-col items-center text-center space-y-8 animate-in fade-in duration-500">
-      <Image 
-        src="https://i.imgur.com/LHpoFr7.png" 
-        alt="FitPath Optimizer Logo"
-        width={150}
-        height={50}
-        className="object-contain"
-      />
+      <div className="flex items-center justify-center gap-4">
+        <Image 
+          src="https://i.imgur.com/9PpkXJ9.png" 
+          alt="New Logo 1"
+          width={150}
+          height={50}
+          className="object-contain"
+        />
+        <Image 
+          src="https://i.imgur.com/Ao7iaNe.png" 
+          alt="New Logo 2"
+          width={150}
+          height={50}
+          className="object-contain"
+        />
+      </div>
       <h1 className="text-[clamp(2rem,5vw,2.75rem)] font-extrabold tracking-tight">
         {plan.planName} Is Ready! 🎉
       </h1>
