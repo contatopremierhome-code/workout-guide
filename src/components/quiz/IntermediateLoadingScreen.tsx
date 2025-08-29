@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
 
 const messagesByStep: { [key: number]: string } = {
@@ -79,8 +79,8 @@ export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingS
 
         {images.length > 0 && (
           <div className="mb-6">
-            <Carousel 
-              opts={{ loop: true }} 
+            <Carousel
+              opts={{ loop: true }}
               plugins={[Autoplay({ delay: 2000, stopOnInteraction: false })]}
               className="w-full max-w-sm mx-auto"
             >
@@ -99,8 +99,6 @@ export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingS
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
             </Carousel>
           </div>
         )}
