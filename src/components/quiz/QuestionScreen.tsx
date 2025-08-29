@@ -38,7 +38,7 @@ export function QuestionScreen({ question, onAnswer, onBack, currentStep, totalS
         )}
         <div className="flex justify-center mb-8">
             <Image 
-                src="https://i.imgur.com/LHpoFr7.png" 
+                src="https://i.imgur.com/fdTiy2A.png" 
                 alt="FitPath Optimizer Logo"
                 width={150}
                 height={50}
