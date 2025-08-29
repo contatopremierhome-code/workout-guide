@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Progress } from '@/components/ui/progress';
+import Image from 'next/image';
 
 interface QuestionScreenProps {
   question: {
@@ -35,7 +36,16 @@ export function QuestionScreen({ question, onAnswer, onBack, currentStep, totalS
             <ArrowLeft className="h-6 w-6" />
             </Button>
         )}
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 mt-16">{question.text}</h2>
+        <div className="flex justify-center mb-8">
+            <Image 
+                src="https://i.imgur.com/LHpoFr7.png" 
+                alt="FitPath Optimizer Logo"
+                width={150}
+                height={50}
+                className="object-contain"
+            />
+        </div>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 mt-8">{question.text}</h2>
         <div className="grid grid-cols-1 gap-4 max-w-md mx-auto">
           {question.options.map((option) => {
             const isSelected = selectedAnswer === option;

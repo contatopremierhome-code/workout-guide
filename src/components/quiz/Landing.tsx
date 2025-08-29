@@ -8,6 +8,14 @@ interface LandingProps {
 export function Landing({ onStart }: LandingProps) {
   return (
     <div className="flex flex-col items-center text-center space-y-8 animate-in fade-in duration-500">
+      <Image 
+        src="https://i.imgur.com/LHpoFr7.png" 
+        alt="FitPath Optimizer Logo"
+        width={150}
+        height={50}
+        className="object-contain"
+        priority
+      />
       <h1 className="text-[clamp(2.25rem,5vw,3rem)] font-extrabold tracking-tight leading-tight">
         MAXIMIZE YOUR RESULTS WITH CLARITY AND FLEXIBILITY
       </h1>
