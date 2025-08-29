@@ -37,8 +37,8 @@ export function Landing({ onStart }: LandingProps) {
       </div>
 
       <div className="w-full flex flex-col items-center space-y-4">
-        <Button onClick={onStart} size="lg" className="w-full max-w-sm text-lg font-bold bg-gradient-accent text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg">
-          Start Your Quiz 🔥
+        <Button onClick={onStart} size="lg" className="w-full max-w-sm text-xl font-bold bg-gradient-to-br from-blue-600 to-purple-800 text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg py-4 h-auto">
+          Continue
         </Button>
       </div>
 
