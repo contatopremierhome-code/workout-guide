@@ -108,12 +108,15 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
         </Card>
       </div>
 
-       <div className="pt-6 text-center space-y-4">
+       <div className="pt-6 text-center space-y-4 max-w-md mx-auto">
             <div className="flex justify-center">
-              <Image src="https://i.imgur.com/JdOXjzb.png" alt="7-day guarantee" width={120} height={120} className="object-contain" />
+              <Image src="https://i.imgur.com/JdOXjzb.png" alt="7-day guarantee" width={150} height={150} className="object-contain" />
             </div>
+            <p className="text-sm text-muted-foreground">
+              <span className="font-bold">7-Day Satisfaction Guarantee.</span> If you're not completely satisfied, get your money back. No questions asked.
+            </p>
             <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
-                <Lock className="h-4 w-4" /> 7-day satisfaction guarantee. Secure payment.
+                <Lock className="h-4 w-4" /> Secure payment.
             </p>
             <p className="font-bold text-amber-600">Limited-time pricing — lock it in today.</p>
         </div>
