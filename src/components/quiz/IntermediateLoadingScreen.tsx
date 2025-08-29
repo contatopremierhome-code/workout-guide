@@ -4,7 +4,8 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import Autoplay from "embla-carousel-autoplay";
 
 const messagesByStep: { [key: number]: string } = {
   4: "Analyzing your profile and unlocking your first bonuses... 👤",
@@ -46,7 +47,7 @@ export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingS
   const images = imagesByStep[step] || [];
 
   useEffect(() => {
-    const totalDuration = 4000; // Increased duration to see images
+    const totalDuration = 4000;
 
     const progressTimer = setInterval(() => {
       setProgress(prev => {
@@ -78,22 +79,28 @@ export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingS
 
         {images.length > 0 && (
           <div className="mb-6">
-            <Carousel opts={{ loop: true, align: 'start' }} className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
+            <Carousel 
+              opts={{ loop: true }} 
+              plugins={[Autoplay({ delay: 2000, stopOnInteraction: false })]}
+              className="w-full max-w-sm mx-auto"
+            >
               <CarouselContent>
                 {images.map((src, index) => (
-                  <CarouselItem key={index} className="basis-1/2 sm:basis-1/3">
+                  <CarouselItem key={index}>
                     <div className="p-1">
                       <Image
                         src={src}
                         alt={`Bonus image ${index + 1}`}
-                        width={200}
-                        height={200}
+                        width={400}
+                        height={400}
                         className="rounded-lg object-contain w-full h-auto"
                       />
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
             </Carousel>
           </div>
         )}
