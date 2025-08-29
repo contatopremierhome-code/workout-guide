@@ -5,7 +5,7 @@ import { Check, Star, Lock } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 interface ResultsScreenProps {
   plan: PersonalizedWorkoutPlanOutput;
@@ -17,6 +17,18 @@ const avatars = [
   'https://picsum.photos/id/239/40/40',
   'https://picsum.photos/id/240/40/40',
   'https://picsum.photos/id/241/40/40',
+];
+
+const benefitImages = [
+  'https://i.imgur.com/dhZj9Zb.png',
+  'https://i.imgur.com/BQuVBfJ.png',
+  'https://i.imgur.com/o6hMd8s.png',
+  'https://i.imgur.com/oPzEv4v.png',
+  'https://i.imgur.com/oF9Y384.png',
+  'https://i.imgur.com/XEykIo1.png',
+  'https://i.imgur.com/nLnzeHI.png',
+  'https://i.imgur.com/pWjjjNC.png',
+  'https://i.imgur.com/UOM8xSP.png',
 ];
 
 export function ResultsScreen({ plan }: ResultsScreenProps) {
@@ -47,6 +59,33 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
         </div>
       </div>
       
+      <div className="w-full max-w-2xl py-8">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6">Here's What You'll Get:</h2>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {benefitImages.map((src, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <Card className='overflow-hidden'>
+                    <CardContent className="flex aspect-square items-center justify-center p-0">
+                       <Image src={src} alt={`Benefit image ${index + 1}`} width={400} height={400} className="object-contain" />
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+
       <div className="w-full grid md:grid-cols-2 gap-8 pt-8">
         <Card className="border-primary border-2 shadow-2xl relative transition-transform duration-300 hover:scale-[1.03]">
           <Badge className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-accent text-white px-4 py-1 text-sm font-bold">Best Value 🔥</Badge>
