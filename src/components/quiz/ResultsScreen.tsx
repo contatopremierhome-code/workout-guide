@@ -23,7 +23,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
   return (
     <div className="flex flex-col items-center text-center space-y-8 animate-in fade-in duration-500">
       <Image 
-        src="https://i.imgur.com/fdTiy2A.png" 
+        src="https://i.imgur.com/LHpoFr7.png" 
         alt="FitPath Optimizer Logo"
         width={150}
         height={50}

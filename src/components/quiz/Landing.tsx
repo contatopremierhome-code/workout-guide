@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
@@ -9,7 +10,7 @@ export function Landing({ onStart }: LandingProps) {
   return (
     <div className="flex flex-col items-center text-center space-y-8 animate-in fade-in duration-500">
       <Image 
-        src="https://i.imgur.com/fdTiy2A.png" 
+        src="https://i.imgur.com/LHpoFr7.png" 
         alt="FitPath Optimizer Logo"
         width={150}
         height={50}
@@ -25,7 +26,7 @@ export function Landing({ onStart }: LandingProps) {
       
       <div className="w-full">
         <Image
-          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438"
+          src="https://i.imgur.com/fdTiy2A.png"
           alt="Person working out in a gym"
           width={720}
           height={480}
