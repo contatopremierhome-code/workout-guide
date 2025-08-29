@@ -9,9 +9,11 @@ import { LoadingScreen } from '@/components/quiz/LoadingScreen';
 import { ResultsScreen } from '@/components/quiz/ResultsScreen';
 import { questions as quizQuestions } from '@/components/quiz/questions-data';
 import { useToast } from "@/hooks/use-toast";
+import { IntermediateLoadingScreen } from '@/components/quiz/IntermediateLoadingScreen';
 
+type QuizStep = 'landing' | 'questions' | 'intermediate-loading' | 'loading' | 'results';
 
-type QuizStep = 'landing' | 'questions' | 'loading' | 'results';
+const INTERMEDIATE_STEPS = [4, 8, 12, 16];
 
 export default function Home() {
   const [step, setStep] = useState<QuizStep>('landing');
@@ -34,12 +36,20 @@ export default function Home() {
     setAnswers(newAnswers);
 
     setTimeout(() => {
-      if (currentQuestionIndex < quizQuestions.length - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      const nextQuestionIndex = currentQuestionIndex + 1;
+      if (INTERMEDIATE_STEPS.includes(nextQuestionIndex)) {
+        setStep('intermediate-loading');
+      } else if (nextQuestionIndex < quizQuestions.length) {
+        setCurrentQuestionIndex(nextQuestionIndex);
       } else {
         setStep('loading');
       }
     }, 300); // Auto-advance
+  };
+  
+  const handleIntermediateLoadingDone = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    setStep('questions');
   };
 
   useEffect(() => {
@@ -59,6 +69,7 @@ export default function Home() {
             variant: "destructive",
           });
           setStep('questions');
+          setCurrentQuestionIndex(0);
         } finally {
           setIsGenerating(false);
         }
@@ -82,6 +93,8 @@ export default function Home() {
             selectedAnswer={answers[quizQuestions[currentQuestionIndex].id]}
           />
         );
+      case 'intermediate-loading':
+        return <IntermediateLoadingScreen onDone={handleIntermediateLoadingDone} step={currentQuestionIndex + 1} />;
       case 'loading':
         return <LoadingScreen />;
       case 'results':
