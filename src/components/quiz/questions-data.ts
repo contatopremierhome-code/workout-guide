@@ -1,3 +1,4 @@
+
 export const questions = [
   {
     id: 'sex',
@@ -17,7 +18,13 @@ export const questions = [
   {
     id: 'weight',
     text: 'What is your current weight? ⚖️',
-    options: ['Under 110 lbs', '110-132 lbs', '133-154 lbs', '155-176 lbs', 'Over 176 lbs'],
+    options: [
+      'Under 110 lbs (50 kg)',
+      '110-132 lbs (50-60 kg)',
+      '133-154 lbs (60-70 kg)',
+      '155-176 lbs (70-80 kg)',
+      'Over 176 lbs (80 kg)',
+    ],
   },
   // Intermediate step 1
   {
