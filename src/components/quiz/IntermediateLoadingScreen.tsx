@@ -2,28 +2,34 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 
-const messagesByStep: { [key: number]: string[] } = {
+const messagesByStep: { [key: number]: string } = {
+  4: "Analyzing your profile and unlocking your first bonuses... 👤",
+  8: "Adjusting for your lifestyle and creating your warm-up guide... 🔥",
+  12: "Calculating your caloric needs and preparing nutrition tips... 🥦",
+  16: "Optimizing for recovery and adding your flexibility guide... 🧘",
+};
+
+const imagesByStep: { [key: number]: string[] } = {
   4: [
-    "Analyzing your initial profile... 👤",
-    "Preparing questions about your goals... 🎯",
-    "All set for the next step!",
+    'https://i.imgur.com/dhZj9Zb.png',
+    'https://i.imgur.com/BQuVBfJ.png',
+    'https://i.imgur.com/o6hMd8s.png',
   ],
   8: [
-    "Adjusting the plan to your lifestyle... 🤸",
-    "Creating your first bonus: Warm-up Guide... 🔥",
-    "Let's keep going!",
+    'https://i.imgur.com/oPzEv4v.png',
+    'https://i.imgur.com/oF9Y384.png',
   ],
   12: [
-    "Calculating your caloric needs... 🍽️",
-    "Unlocking bonus: Nutrition Tips... 🥦",
-    "We're almost halfway there!",
+    'https://i.imgur.com/XEykIo1.png',
+    'https://i.imgur.com/nLnzeHI.png',
   ],
   16: [
-    "Optimizing for recovery and rest... 😴",
-    "Adding final bonus: Flexibility Guide... 🧘",
-    "Just a little more!",
+    'https://i.imgur.com/pWjjjNC.png',
+    'https://i.imgur.com/UOM8xSP.png',
   ],
 };
 
@@ -34,53 +40,65 @@ interface IntermediateLoadingScreenProps {
 }
 
 export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingScreenProps) {
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  const messages = messagesByStep[step] || [];
+  const message = messagesByStep[step] || "Preparing the next step...";
+  const images = imagesByStep[step] || [];
 
   useEffect(() => {
-    const totalDuration = 3000;
-    const messageInterval = totalDuration / messages.length;
-
-    const messageTimer = setInterval(() => {
-      setCurrentMessageIndex((prevIndex) => {
-        if (prevIndex < messages.length - 1) {
-          return prevIndex + 1;
-        }
-        return prevIndex;
-      });
-    }, messageInterval);
+    const totalDuration = 4000; // Increased duration to see images
 
     const progressTimer = setInterval(() => {
       setProgress(prev => {
-        const newProgress = prev + 10;
+        const newProgress = prev + (100 / (totalDuration / 100));
         if (newProgress >= 100) {
           clearInterval(progressTimer);
           return 100;
         }
         return newProgress;
       });
-    }, totalDuration / 10);
+    }, 100);
 
     const doneTimer = setTimeout(() => {
       onDone();
     }, totalDuration);
 
     return () => {
-      clearInterval(messageTimer);
       clearInterval(progressTimer);
       clearTimeout(doneTimer);
     };
-  }, [onDone, messages.length]);
+  }, [onDone]);
 
   return (
     <div className="fixed inset-0 bg-background/80 backdrop-blur-md flex flex-col items-center justify-center z-[100] animate-in fade-in duration-500 space-y-6 text-center px-4">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-lg">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
-          {messages[currentMessageIndex]}
+          {message}
         </h2>
-        <div className="w-full bg-muted rounded-full overflow-hidden">
+
+        {images.length > 0 && (
+          <div className="mb-6">
+            <Carousel opts={{ loop: true, align: 'start' }} className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
+              <CarouselContent>
+                {images.map((src, index) => (
+                  <CarouselItem key={index} className="basis-1/2 sm:basis-1/3">
+                    <div className="p-1">
+                      <Image
+                        src={src}
+                        alt={`Bonus image ${index + 1}`}
+                        width={200}
+                        height={200}
+                        className="rounded-lg object-contain w-full h-auto"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+        )}
+
+        <div className="w-full bg-muted rounded-full overflow-hidden max-w-md mx-auto">
           <Progress value={progress} className="w-full h-3" />
         </div>
       </div>
