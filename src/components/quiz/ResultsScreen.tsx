@@ -22,19 +22,12 @@ const avatars = [
 export function ResultsScreen({ plan }: ResultsScreenProps) {
   return (
     <div className="flex flex-col items-center text-center space-y-8 animate-in fade-in duration-500">
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center justify-center">
         <Image 
-          src="https://i.imgur.com/9PpkXJ9.png" 
-          alt="New Logo 1"
-          width={150}
-          height={50}
-          className="object-contain"
-        />
-        <Image 
-          src="https://i.imgur.com/Ao7iaNe.png" 
-          alt="New Logo 2"
-          width={150}
-          height={50}
+          src="https://imgur.com/9PpkXJ9.png" 
+          alt="Logo"
+          width={300}
+          height={100}
           className="object-contain"
         />
       </div>
