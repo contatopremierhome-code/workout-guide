@@ -18,7 +18,7 @@ export function Landing({ onStart }: LandingProps) {
         priority
       />
       <h1 className="text-[clamp(2.25rem,5vw,3rem)] font-extrabold tracking-tight leading-tight">
-        MAXIMIZE YOUR RESULTS WITH CLARITY AND FLEXIBILITY
+        MAXIMIZE YOUR RESULTS WITH <span className="text-destructive">CLARITY AND FLEXIBILITY</span>
       </h1>
       <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
         A practical and efficient solution to maximize your results. Whether it’s Weight Loss or Muscle Gain.
