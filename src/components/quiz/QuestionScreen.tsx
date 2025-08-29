@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ProgressBar } from './ProgressBar';
-import { Check } from 'lucide-react';
+import { Check, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface QuestionScreenProps {
@@ -10,16 +10,28 @@ interface QuestionScreenProps {
     options: readonly string[];
   };
   onAnswer: (answer: string) => void;
+  onBack: () => void;
   currentStep: number;
   totalSteps: number;
   selectedAnswer?: string;
 }
 
-export function QuestionScreen({ question, onAnswer, currentStep, totalSteps, selectedAnswer }: QuestionScreenProps) {
+export function QuestionScreen({ question, onAnswer, onBack, currentStep, totalSteps, selectedAnswer }: QuestionScreenProps) {
   return (
     <div className="animate-in fade-in duration-500">
       <ProgressBar current={currentStep} total={totalSteps} />
       <div className="p-4 md:p-8 text-center">
+        {currentStep > 1 && (
+            <Button
+            variant="ghost"
+            size="icon"
+            onClick={onBack}
+            className="absolute top-[6.5rem] left-4 md:left-8 rounded-full"
+            aria-label="Go back"
+            >
+            <ArrowLeft className="h-6 w-6" />
+            </Button>
+        )}
         <h2 className="text-2xl md:text-3xl font-bold mb-8">{question.text}</h2>
         <div className="grid grid-cols-1 gap-4 max-w-md mx-auto">
           {question.options.map((option) => {

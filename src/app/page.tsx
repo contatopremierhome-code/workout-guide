@@ -47,6 +47,16 @@ export default function Home() {
     }, 300); // Auto-advance
   };
   
+  const handleBack = () => {
+    if (step !== 'questions' || currentQuestionIndex === 0) return;
+
+    // Check if we need to "skip" an intermediate loading step when going back
+    if (INTERMEDIATE_STEPS.includes(currentQuestionIndex)) {
+      setStep('questions');
+    }
+    setCurrentQuestionIndex(prevIndex => prevIndex - 1);
+  };
+
   const handleIntermediateLoadingDone = () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     setStep('questions');
@@ -88,6 +98,7 @@ export default function Home() {
           <QuestionScreen
             question={quizQuestions[currentQuestionIndex]}
             onAnswer={handleAnswer}
+            onBack={handleBack}
             currentStep={currentQuestionIndex + 1}
             totalSteps={quizQuestions.length}
             selectedAnswer={answers[quizQuestions[currentQuestionIndex].id]}
