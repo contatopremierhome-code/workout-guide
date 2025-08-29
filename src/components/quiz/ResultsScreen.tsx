@@ -24,7 +24,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
     <div className="flex flex-col items-center text-center space-y-8 animate-in fade-in duration-500">
       <div className="flex items-center justify-center">
         <Image 
-          src="https://imgur.com/9PpkXJ9.png" 
+          src="https://i.imgur.com/9PpkXJ9.png" 
           alt="Logo"
           width={300}
           height={100}
