@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Progress } from '@/components/ui/progress';
 
 interface QuestionScreenProps {
   question: {
@@ -19,6 +20,9 @@ interface QuestionScreenProps {
 export function QuestionScreen({ question, onAnswer, onBack, currentStep, totalSteps, selectedAnswer }: QuestionScreenProps) {
   return (
     <div className="animate-in fade-in duration-500">
+        <div className="absolute top-0 left-0 right-0 p-4">
+            <Progress value={(currentStep / totalSteps) * 100} className="w-full" />
+        </div>
       <div className="p-4 md:p-8 text-center relative">
         {currentStep > 1 && (
             <Button
