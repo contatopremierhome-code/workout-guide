@@ -40,14 +40,7 @@ export function Landing({ onStart }: LandingProps) {
         <Button onClick={onStart} size="lg" className="w-full max-w-sm text-lg font-bold bg-gradient-accent text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg">
           Start Your Quiz 🔥
         </Button>
-        <a href="#how-it-works" className="text-primary font-medium hover:underline">
-          How it works
-        </a>
       </div>
-
-      <p className="text-sm text-muted-foreground">
-        Takes less than 60 seconds ⏱️ • No email required to start
-      </p>
 
       <section id="how-it-works" className="w-full text-left pt-16 space-y-6">
         <h2 className="text-3xl font-bold text-center">Benefits You'll Love</h2>
