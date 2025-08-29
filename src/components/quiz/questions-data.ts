@@ -13,7 +13,13 @@ export const questions = [
   {
     id: 'height',
     text: 'What is your height? 📏',
-    options: ['Under 5ft', '5ft - 5ft 3in', '5ft 4in - 5ft 7in', '5ft 8in - 5ft 11in', 'Over 6ft'],
+    options: [
+      'Under 5ft (< 1.52m)',
+      '5ft - 5ft 3in (1.52m - 1.60m)',
+      '5ft 4in - 5ft 7in (1.62m - 1.70m)',
+      '5ft 8in - 5ft 11in (1.72m - 1.80m)',
+      'Over 6ft (> 1.82m)',
+    ],
   },
   {
     id: 'weight',
