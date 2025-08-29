@@ -59,6 +59,28 @@ export function Landing({ onStart }: LandingProps) {
           </div>
         </div>
       </section>
+
+      <section className="w-full text-left pt-16 space-y-6">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">It's not just about aesthetics...</h2>
+            <p className="text-muted-foreground text-lg">
+              Physical activities generate a great number of benefits for our body and also for our mind.
+            </p>
+          </div>
+          <div>
+            <Image
+              src="https://i.imgur.com/oasut2a.png"
+              alt="Woman meditating"
+              width={500}
+              height={500}
+              className="rounded-2xl object-cover w-full h-auto shadow-lg"
+              data-ai-hint="meditation yoga"
+            />
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
