@@ -1,0 +1,62 @@
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+
+interface LandingProps {
+  onStart: () => void;
+}
+
+export function Landing({ onStart }: LandingProps) {
+  return (
+    <div className="flex flex-col items-center text-center space-y-8 animate-in fade-in duration-500">
+      <h1 className="text-[clamp(2.25rem,5vw,3rem)] font-extrabold tracking-tight leading-tight">
+        MAXIMIZE YOUR RESULTS WITH CLARITY AND FLEXIBILITY
+      </h1>
+      <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+        A practical and efficient solution to maximize your results. Whether it’s Weight Loss or Muscle Gain.
+      </p>
+      
+      <div className="w-full">
+        <Image
+          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438"
+          alt="Person working out in a gym"
+          width={720}
+          height={480}
+          className="rounded-2xl object-cover w-full h-auto shadow-lg"
+          priority
+          data-ai-hint="fitness gym"
+        />
+      </div>
+
+      <div className="w-full flex flex-col items-center space-y-4">
+        <Button onClick={onStart} size="lg" className="w-full max-w-sm text-lg font-bold bg-gradient-accent text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg">
+          Start Your Quiz 🔥
+        </Button>
+        <a href="#how-it-works" className="text-primary font-medium hover:underline">
+          How it works
+        </a>
+      </div>
+
+      <p className="text-sm text-muted-foreground">
+        Takes less than 60 seconds ⏱️ • No email required to start
+      </p>
+
+      <section id="how-it-works" className="w-full text-left pt-16 space-y-6">
+        <h2 className="text-3xl font-bold text-center">Benefits You'll Love</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-card p-6 rounded-2xl border">
+            <h3 className="text-xl font-bold mb-2">Personalized guidance 🎯</h3>
+            <p className="text-muted-foreground">Get a plan tailored specifically to your goals and lifestyle.</p>
+          </div>
+          <div className="bg-card p-6 rounded-2xl border">
+            <h3 className="text-xl font-bold mb-2">Fast, actionable answers ⚡</h3>
+            <p className="text-muted-foreground">No fluff. Just clear steps to get you started right away.</p>
+          </div>
+          <div className="bg-card p-6 rounded-2xl border">
+            <h3 className="text-xl font-bold mb-2">Optimized for flexibility 💪</h3>
+            <p className="text-muted-foreground">Our plans adapt to your real-life schedule, not the other way around.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

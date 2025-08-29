@@ -11,10 +11,11 @@ export default {
     extend: {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        headline: ['Montserrat', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
+        'cta-green': '#22C55E',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
