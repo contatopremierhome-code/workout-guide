@@ -12,10 +12,10 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const PersonalizedWorkoutPlanInputSchema = z.object({
-  sex: z.string().describe('The user\'s sex: Masculino, Feminino'),
-  age: z.string().describe('The user\'s age range.'),
-  height: z.string().describe('The user\'s height range.'),
-  weight: z.string().describe('The user\'s current weight range.'),
+  sex: z.string().describe("The user's sex: Male, Female"),
+  age: z.string().describe("The user's age range."),
+  height: z.string().describe("The user's height range."),
+  weight: z.string().describe("The user's current weight range."),
   goal: z
     .string()
     .describe('The primary fitness goal: Lose weight, Build muscle, or Improve overall health.'),
@@ -32,11 +32,11 @@ const PersonalizedWorkoutPlanInputSchema = z.object({
   focusArea: z.string().describe('The main body part the user wants to focus on.'),
   workoutDuration: z.string().describe('The preferred duration for each workout session.'),
   workoutTime: z.string().describe('The preferred time of day to work out.'),
-  diet: z.string().describe('The user\'s current diet type.'),
+  diet: z.string().describe("The user's current diet type."),
   motivation: z.string().describe('What motivates the user the most.'),
   activityLevel: z.string().describe('The user\'s daily activity level outside of exercise.'),
-  sleep: z.string().describe('The user\'s average nightly sleep duration.'),
-  stress: z.string().describe('The user\'s current stress level.'),
+  sleep: z.string().describe("The user's average nightly sleep duration."),
+  stress: z.string().describe("The user's current stress level."),
   equipment: z.string().describe('The equipment available to the user.'),
   healthIssues: z.string().describe('Any health issues or limitations the user has.'),
   desiredTimeline: z
@@ -61,7 +61,7 @@ const prompt = ai.definePrompt({
   name: 'personalizedWorkoutPlanPrompt',
   input: {schema: PersonalizedWorkoutPlanInputSchema},
   output: {schema: PersonalizedWorkoutPlanOutputSchema},
-  prompt: `You are a personal trainer expert at creating workout plans in Brazilian Portuguese.
+  prompt: `You are an expert personal trainer creating workout plans.
 
   Based on the user's input, create a personalized workout plan tailored to their specific needs.
 
@@ -89,7 +89,7 @@ const prompt = ai.definePrompt({
 
   The workout plan should be realistic and achievable, taking into account the user's limitations.
   The plan description should have at least 3 sentences.
-  The response must be in Brazilian Portuguese.
+  The response must be in English.
   Return the plan in a JSON format.
   `,
 });

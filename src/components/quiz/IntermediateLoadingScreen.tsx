@@ -6,24 +6,24 @@ import { Progress } from '@/components/ui/progress';
 
 const messagesByStep: { [key: number]: string[] } = {
   4: [
-    "Analisando seu perfil inicial... 👤",
-    "Preparando perguntas sobre seus objetivos... 🎯",
-    "Tudo certo para a próxima etapa!",
+    "Analyzing your initial profile... 👤",
+    "Preparing questions about your goals... 🎯",
+    "All set for the next step!",
   ],
   8: [
-    "Ajustando o plano ao seu estilo de vida... 🤸",
-    "Criando seu primeiro bônus: Guia de Aquecimento... 🔥",
-    "Vamos continuar!",
+    "Adjusting the plan to your lifestyle... 🤸",
+    "Creating your first bonus: Warm-up Guide... 🔥",
+    "Let's keep going!",
   ],
   12: [
-    "Calculando suas necessidades calóricas... 🍽️",
-    "Desbloqueando bônus: Dicas de Nutrição... 🥦",
-    "Estamos quase na metade!",
+    "Calculating your caloric needs... 🍽️",
+    "Unlocking bonus: Nutrition Tips... 🥦",
+    "We're almost halfway there!",
   ],
   16: [
-    "Otimizando a recuperação e descanso... 😴",
-    "Adicionando bônus final: Guia de Flexibilidade... 🧘",
-    "Falta pouco!",
+    "Optimizing for recovery and rest... 😴",
+    "Adding final bonus: Flexibility Guide... 🧘",
+    "Just a little more!",
   ],
 };
 
