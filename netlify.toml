@@ -1,0 +1,15 @@
+# Configurações para deploy de um site Next.js na Netlify
+[build]
+  # Comando para construir o site
+  command = "npm run build"
+  
+  # Pasta que será publicada após a construção
+  # Para Next.js, a pasta é .next
+  publish = ".next"
+
+# O plugin do Next.js é essencial para que funcionalidades como
+# Server-Side Rendering, API Routes e otimização de imagens funcionem.
+# A Netlify geralmente o detecta automaticamente, mas é uma boa prática
+# declará-lo explicitamente.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
