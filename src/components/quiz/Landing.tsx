@@ -17,11 +17,11 @@ export function Landing({ onStart }: LandingProps) {
         className="object-contain"
         priority
       />
-      <h1 className="text-[clamp(1.75rem,5vw,3rem)] font-extrabold tracking-tight leading-tight">
-        MAXIMIZE YOUR RESULTS WITH <span className="text-destructive">CLARITY AND FLEXIBILITY</span>
+      <h1 className="text-[clamp(1.75rem,5vw,3rem)] font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+        MAXIMIZE YOUR RESULTS WITH CLARITY AND FLEXIBILITY
       </h1>
       <p className="text-base md:text-xl text-muted-foreground max-w-2xl">
-        A practical and efficient solution to maximize your results. Whether it’s <span className="text-destructive">Weight Loss</span> or <span className="text-destructive">Muscle Gain</span>.
+        A practical and efficient solution to maximize your results. Whether it’s <span className="text-primary font-semibold">Weight Loss</span> or <span className="text-primary font-semibold">Muscle Gain</span>.
       </p>
       
       <div className="w-full">
@@ -37,8 +37,15 @@ export function Landing({ onStart }: LandingProps) {
       </div>
 
       <div className="w-full flex flex-col items-center space-y-4 pt-4">
-        <Button onClick={onStart} size="lg" className="w-full max-w-sm text-lg md:text-xl font-bold bg-gradient-to-br from-blue-600 to-purple-800 text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg py-4 h-auto">
-          Continue
+        <Button 
+          onClick={onStart} 
+          size="lg" 
+          className="relative w-full max-w-sm text-lg md:text-xl font-bold bg-gradient-accent text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg py-4 h-auto overflow-hidden group"
+        >
+          <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] group-hover:animate-[spin_2s_linear_infinite]" />
+          <div className="relative z-10 w-full h-full flex items-center justify-center bg-background rounded-md m-0.5 group-hover:bg-transparent transition-colors duration-300">
+            Continue
+          </div>
         </Button>
       </div>
 
