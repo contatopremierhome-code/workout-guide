@@ -75,18 +75,18 @@ export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingS
   }, [onDone]);
 
   return (
-    <div className="fixed inset-0 bg-background/80 backdrop-blur-md flex flex-col items-center justify-center z-[100] animate-in fade-in duration-500 space-y-6 text-center px-4">
-      <div className="w-full max-w-lg">
-        <div className="flex justify-center mb-8">
+    <div className="fixed inset-0 bg-background/80 backdrop-blur-md flex flex-col items-center justify-center z-[100] animate-in fade-in duration-500 space-y-4 md:space-y-6 text-center px-4">
+      <div className="w-full max-w-md md:max-w-lg">
+        <div className="flex justify-center mb-6 md:mb-8">
             <Image 
                 src="https://i.imgur.com/LHpoFr7.png" 
                 alt="FitPath Optimizer Logo"
-                width={150}
-                height={50}
+                width={120}
+                height={40}
                 className="object-contain"
             />
         </div>
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+        <h2 className="text-xl md:text-3xl font-bold mb-4">
           {message}
         </h2>
 
@@ -95,7 +95,7 @@ export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingS
             <Carousel
               opts={{ loop: true }}
               plugins={[Autoplay({ delay: 2000, stopOnInteraction: false })]}
-              className="w-full max-w-sm mx-auto"
+              className="w-full max-w-xs md:max-w-sm mx-auto"
             >
               <CarouselContent>
                 {images.map((src, index) => (

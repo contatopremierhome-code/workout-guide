@@ -21,20 +21,20 @@ const avatars = [
 
 export function ResultsScreen({ plan }: ResultsScreenProps) {
   return (
-    <div className="flex flex-col items-center text-center space-y-8 animate-in fade-in duration-500">
+    <div className="flex flex-col items-center text-center space-y-6 md:space-y-8 animate-in fade-in duration-500">
       <div className="flex items-center justify-center">
         <Image 
           src="https://i.imgur.com/9PpkXJ9.png" 
           alt="Logo"
-          width={300}
-          height={100}
+          width={250}
+          height={83}
           className="object-contain"
         />
       </div>
-      <h1 className="text-[clamp(2rem,5vw,2.75rem)] font-extrabold tracking-tight">
+      <h1 className="text-[clamp(1.75rem,5vw,2.75rem)] font-extrabold tracking-tight">
         {plan.planName} Is Ready! 🎉
       </h1>
-      <p className="text-lg md:text-xl text-muted-foreground max-w-3xl">
+      <p className="text-base md:text-xl text-muted-foreground max-w-3xl">
         {plan.description}
       </p>
 
@@ -56,8 +56,8 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
         </div>
       </div>
       
-      <div className="w-full max-w-3xl py-8 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6">Here's a Summary of What You'll Get:</h2>
+      <div className="w-full max-w-3xl py-4 md:py-8 text-center">
+        <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-6">Here's a Summary of What You'll Get:</h2>
         <div className="flex justify-center">
           <Image 
             src="https://i.imgur.com/Xd7SCxA.png" 
@@ -69,14 +69,14 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
         </div>
       </div>
 
-      <div className="w-full grid md:grid-cols-2 gap-8 pt-8">
+      <div className="w-full grid md:grid-cols-2 gap-6 md:gap-8 pt-4 md:pt-8">
         <Card className="border-primary border-2 shadow-2xl relative transition-transform duration-300 hover:scale-[1.03]">
           <Badge className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-accent text-white px-4 py-1 text-sm font-bold">Best Value 🔥</Badge>
           <CardHeader className="pt-10">
-            <CardTitle className="text-2xl">Lifetime Access</CardTitle>
-            <p className="text-4xl font-extrabold">$19.90</p>
+            <CardTitle className="text-xl md:text-2xl">Lifetime Access</CardTitle>
+            <p className="text-3xl md:text-4xl font-extrabold">$19.90</p>
           </CardHeader>
-          <CardContent className="space-y-4 text-left">
+          <CardContent className="space-y-4 text-left px-4 pb-4 md:px-6 md:pb-6">
             <ul className="space-y-2 text-muted-foreground">
               <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Lifetime access to all materials</span></li>
               <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>All updates included</span></li>
@@ -92,10 +92,10 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
         <Card className="relative transition-transform duration-300 hover:scale-[1.03]">
            <Badge variant="outline" className="absolute -top-4 left-1/2 -translate-x-1/2 bg-background px-4 py-1 text-sm font-bold">Essential</Badge>
           <CardHeader className="pt-10">
-            <CardTitle className="text-2xl">6-Month Access</CardTitle>
-            <p className="text-4xl font-extrabold">$9.90</p>
+            <CardTitle className="text-xl md:text-2xl">6-Month Access</CardTitle>
+            <p className="text-3xl md:text-4xl font-extrabold">$9.90</p>
           </CardHeader>
-          <CardContent className="space-y-4 text-left">
+          <CardContent className="space-y-4 text-left px-4 pb-4 md:px-6 md:pb-6">
             <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>6 months of access</span></li>
                 <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Core workout plans</span></li>
@@ -110,7 +110,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
 
        <div className="pt-6 text-center space-y-4 max-w-md mx-auto">
             <div className="flex justify-center">
-              <Image src="https://i.imgur.com/JdOXjzb.png" alt="7-day guarantee" width={150} height={150} className="object-contain" />
+              <Image src="https://i.imgur.com/JdOXjzb.png" alt="7-day guarantee" width={120} height={120} className="object-contain" />
             </div>
             <p className="text-sm text-muted-foreground">
               <span className="font-bold">7-Day Satisfaction Guarantee.</span> If you're not completely satisfied, get your money back. No questions asked.
