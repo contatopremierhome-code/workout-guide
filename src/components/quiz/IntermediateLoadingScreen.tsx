@@ -52,17 +52,19 @@ export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingS
 
   useEffect(() => {
     const totalDuration = 4000;
+    const intervalTime = 50; // Update every 50ms for smoother animation
+    const progressIncrement = (100 / (totalDuration / intervalTime));
 
     const progressTimer = setInterval(() => {
       setProgress(prev => {
-        const newProgress = prev + (100 / (totalDuration / 100));
+        const newProgress = prev + progressIncrement;
         if (newProgress >= 100) {
           clearInterval(progressTimer);
           return 100;
         }
         return newProgress;
       });
-    }, 100);
+    }, intervalTime);
 
     const doneTimer = setTimeout(() => {
       onDone();
