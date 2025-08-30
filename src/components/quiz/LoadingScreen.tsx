@@ -47,6 +47,7 @@ export function LoadingScreen() {
                 width={150}
                 height={50}
                 className="object-contain"
+                priority
             />
         </div>
         <h2 className="text-2xl md:text-3xl font-bold mb-4">

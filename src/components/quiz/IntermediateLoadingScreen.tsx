@@ -86,6 +86,7 @@ export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingS
                 width={120}
                 height={40}
                 className="object-contain"
+                priority
             />
         </div>
         <h2 className="text-xl md:text-3xl font-bold mb-4">
@@ -109,6 +110,7 @@ export function IntermediateLoadingScreen({ onDone, step }: IntermediateLoadingS
                         width={400}
                         height={400}
                         className="rounded-lg object-contain w-full h-auto"
+                        priority={index === 0}
                       />
                     </div>
                   </CarouselItem>

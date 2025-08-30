@@ -29,6 +29,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
           width={250}
           height={83}
           className="object-contain"
+          priority
         />
       </div>
       <h1 className="text-[clamp(1.75rem,5vw,2.75rem)] font-extrabold tracking-tight">
@@ -65,6 +66,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
             width={800} 
             height={600} 
             className="rounded-xl shadow-lg object-contain w-full h-auto"
+            priority
           />
         </div>
       </div>
@@ -110,7 +112,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
 
        <div className="pt-6 text-center space-y-4 max-w-md mx-auto">
             <div className="flex justify-center">
-              <Image src="https://i.imgur.com/JdOXjzb.png" alt="7-day guarantee" width={120} height={120} className="object-contain" />
+              <Image src="https://i.imgur.com/JdOXjzb.png" alt="7-day guarantee" width={120} height={120} className="object-contain" priority />
             </div>
             <p className="text-sm text-muted-foreground">
               <span className="font-bold">7-Day Satisfaction Guarantee.</span> If you're not completely satisfied, get your money back. No questions asked.

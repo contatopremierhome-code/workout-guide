@@ -44,6 +44,7 @@ export function QuestionScreen({ question, onAnswer, onBack, currentStep, totalS
                 width={120}
                 height={40}
                 className="object-contain"
+                priority
             />
         </div>
         <h2 className="text-xl md:text-3xl font-bold mb-6 mt-6">{question.text}</h2>
