@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { PersonalizedWorkoutPlanInput, PersonalizedWorkoutPlanOutput } from '@/ai/flows/personalized-workout-plan';
 import { generatePersonalizedWorkoutPlan } from '@/ai/flows/personalized-workout-plan';
 import { Landing } from '@/components/quiz/Landing';
@@ -22,15 +22,33 @@ export default function Home() {
   const [plan, setPlan] = useState<PersonalizedWorkoutPlanOutput | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    // Pre-load the audio when the component mounts
+    if (typeof window !== 'undefined') {
+        audioRef.current = new Audio('/click-sound.mp3');
+        audioRef.current.preload = 'auto';
+    }
+  }, []);
+
+  const playSound = () => {
+    if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(error => console.error("Audio play failed:", error));
+    }
+  };
 
   const startQuiz = () => {
     setAnswers({});
     setCurrentQuestionIndex(0);
     setPlan(null);
     setStep('questions');
+    playSound();
   };
 
   const handleAnswer = (answer: string) => {
+    playSound();
     const currentQuestion = quizQuestions[currentQuestionIndex];
     const newAnswers = { ...answers, [currentQuestion.id]: answer };
     setAnswers(newAnswers);
@@ -49,6 +67,7 @@ export default function Home() {
   
   const handleBack = () => {
     if (step !== 'questions' || currentQuestionIndex === 0) return;
+    playSound();
 
     // Check if we need to "skip" an intermediate loading step when going back
     if (INTERMEDIATE_STEPS.includes(currentQuestionIndex)) {
