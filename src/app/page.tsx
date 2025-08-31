@@ -40,11 +40,11 @@ export default function Home() {
   };
 
   const startQuiz = () => {
+    playSound();
     setAnswers({});
     setCurrentQuestionIndex(0);
     setPlan(null);
     setStep('questions');
-    playSound();
   };
 
   const handleAnswer = (answer: string) => {
