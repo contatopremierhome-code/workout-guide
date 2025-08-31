@@ -1,9 +1,9 @@
 import type { PersonalizedWorkoutPlanOutput } from '@/ai/flows/personalized-workout-plan';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Check, Star, Lock } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
+import { CheckoutButton } from './CheckoutButton';
 
 interface ResultsScreenProps {
   plan: PersonalizedWorkoutPlanOutput;
@@ -18,11 +18,6 @@ const avatars = [
 ];
 
 export function ResultsScreen({ plan }: ResultsScreenProps) {
-  const handleCheckout = (url: string) => {
-    if (typeof window !== 'undefined') {
-      window.location.href = url;
-    }
-  };
 
   return (
     <div className="flex flex-col items-center text-center space-y-6 md:space-y-8 animate-in fade-in duration-500">
@@ -89,13 +84,13 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
               <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Full workout library + progress trackers</span></li>
               <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Priority support</span></li>
             </ul>
-            <Button
+            <CheckoutButton
               size="lg"
               className="w-full font-bold text-lg bg-cta-green hover:bg-cta-green/90 text-white shadow-lg"
-              onClick={() => handleCheckout('https://pay.hotmart.com/F101636056V?checkoutMode=10')}
+              checkoutUrl='https://pay.hotmart.com/F101636056V?checkoutMode=10'
             >
               Get Lifetime Access
-            </Button>
+            </CheckoutButton>
           </CardContent>
         </Card>
 
@@ -111,14 +106,14 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
                 <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Core workout plans</span></li>
                 <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Standard support</span></li>
             </ul>
-             <Button
+             <CheckoutButton
                 size="lg"
                 variant="outline"
                 className="w-full font-bold text-lg border-2 border-primary text-primary hover:bg-primary/10 hover:text-primary"
-                onClick={() => handleCheckout('https://pay.hotmart.com/R101635715E?checkoutMode=10&bid=1756499267439')}
+                checkoutUrl='https://pay.hotmart.com/R101635715E?checkoutMode=10&bid=1756499267439'
               >
                 Start Now
-              </Button>
+              </CheckoutButton>
           </CardContent>
         </Card>
       </div>
