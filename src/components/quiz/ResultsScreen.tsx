@@ -19,7 +19,9 @@ const avatars = [
 
 export function ResultsScreen({ plan }: ResultsScreenProps) {
   const handleCheckout = (url: string) => {
-    window.location.href = url;
+    if (typeof window !== 'undefined') {
+      window.location.href = url;
+    }
   };
 
   return (

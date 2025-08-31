@@ -13,7 +13,7 @@ import { IntermediateLoadingScreen } from '@/components/quiz/IntermediateLoading
 
 type QuizStep = 'landing' | 'questions' | 'intermediate-loading' | 'loading' | 'results';
 
-const INTERMEDIATE_STEPS = [4, 8, 10, 12, 16];
+const INTERMEDIATE_STEPS = [4, 8, 12, 16];
 
 export default function Home() {
   const [step, setStep] = useState<QuizStep>('landing');

@@ -7,31 +7,27 @@ import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carouse
 import Autoplay from "embla-carousel-autoplay";
 
 const messagesByStep: { [key: number]: string } = {
-  4: "Analyzing your profile and unlocking your first bonuses... 👤",
-  8: "Adjusting for your lifestyle and creating your warm-up guide... 🔥",
-  10: "It's not just about aesthetics... it's about well-being too! 🧠",
-  12: "Calculating your caloric needs and preparing nutrition tips... 🥦",
-  16: "Optimizing for recovery and adding your flexibility guide... 🧘",
+  5: "Analyzing your profile and unlocking your first bonuses... 👤",
+  9: "Adjusting for your lifestyle and creating your warm-up guide... 🔥",
+  13: "Calculating your caloric needs and preparing nutrition tips... 🥦",
+  17: "Optimizing for recovery and adding your flexibility guide... 🧘",
 };
 
 const imagesByStep: { [key: number]: string[] } = {
-  4: [
+  5: [
     'https://i.imgur.com/dhZj9Zb.png',
     'https://i.imgur.com/BQuVBfJ.png',
     'https://i.imgur.com/o6hMd8s.png',
   ],
-  8: [
+  9: [
     'https://i.imgur.com/oPzEv4v.png',
     'https://i.imgur.com/oF9Y384.png',
   ],
-  10: [
-    'https://i.imgur.com/oasut2a.png',
-  ],
-  12: [
+  13: [
     'https://i.imgur.com/XEykIo1.png',
     'https://i.imgur.com/nLnzeHI.png',
   ],
-  16: [
+  17: [
     'https://i.imgur.com/pWjjjNC.png',
     'https://i.imgur.com/UOM8xSP.png',
   ],
