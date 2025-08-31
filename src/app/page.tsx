@@ -28,7 +28,6 @@ export default function Home() {
     if (audioRef.current) {
         audioRef.current.currentTime = 0;
         audioRef.current.play().catch(error => {
-            // Browsers can still sometimes block audio, so we log errors just in case.
             console.error("Audio playback failed:", error);
         });
     }
@@ -64,7 +63,6 @@ export default function Home() {
     if (step !== 'questions' || currentQuestionIndex === 0) return;
     playSound();
     
-    // Check if we need to "skip" an intermediate loading step when going back
     if (INTERMEDIATE_STEPS.includes(currentQuestionIndex)) {
       setStep('questions');
     }
@@ -131,8 +129,8 @@ export default function Home() {
 
   return (
     <main className="container mx-auto px-4 py-8 md:py-16">
-        {/* Audio element is now part of the JSX, making it more reliable */}
-        <audio ref={audioRef} src="/click-sound.mp3" preload="auto" />
+        {/* Usando um arquivo de som de uma URL pública para garantir que ele seja encontrado */}
+        <audio ref={audioRef} src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto" />
         <div className="relative mx-auto w-full max-w-[720px]">
             {renderStep()}
         </div>
