@@ -2,26 +2,28 @@
 
 import { useState, useEffect } from 'react';
 import type { PersonalizedWorkoutPlanInput, PersonalizedWorkoutPlanOutput } from '@/ai/flows/personalized-workout-plan';
-import { generatePersonalizedWorkoutPlan } from '@/ai/flows/personalized-workout-plan';
 import { Landing } from '@/components/quiz/Landing';
 import { QuestionScreen } from '@/components/quiz/QuestionScreen';
 import { LoadingScreen } from '@/components/quiz/LoadingScreen';
 import { ResultsScreen } from '@/components/quiz/ResultsScreen';
 import { questions as quizQuestions } from '@/components/quiz/questions-data';
-import { useToast } from "@/hooks/use-toast";
 import { IntermediateLoadingScreen } from '@/components/quiz/IntermediateLoadingScreen';
 
 type QuizStep = 'landing' | 'questions' | 'intermediate-loading' | 'loading' | 'results';
 
 const INTERMEDIATE_STEPS = [4, 8, 12, 16];
 
+// Plano estático para não depender da API
+const staticPlan: PersonalizedWorkoutPlanOutput = {
+  planName: 'Your Custom Fitness Plan',
+  description: 'Based on your answers, we have prepared a comprehensive plan to help you achieve your fitness goals. This plan includes a detailed workout schedule, nutritional guidance, and exclusive bonus materials to maximize your results.',
+};
+
 export default function Home() {
   const [step, setStep] = useState<QuizStep>('landing');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Partial<PersonalizedWorkoutPlanInput>>({});
   const [plan, setPlan] = useState<PersonalizedWorkoutPlanOutput | null>(null);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const { toast } = useToast();
 
   const startQuiz = () => {
     setAnswers({});
@@ -62,29 +64,14 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (step === 'loading' && !isGenerating) {
-      const generatePlan = async () => {
-        setIsGenerating(true);
-        try {
-          const fullAnswers = answers as PersonalizedWorkoutPlanInput;
-          const generatedPlan = await generatePersonalizedWorkoutPlan(fullAnswers);
-          setPlan(generatedPlan);
-          setStep('results');
-        } catch (error) {
-          console.error("Error generating workout plan:", error);
-          toast({
-            title: "An error occurred",
-            description: "We couldn't generate your plan. Please check your API key and try again.",
-            variant: "destructive",
-          });
-          setStep('landing'); // Go to landing to avoid being stuck in a loop
-        } finally {
-          setIsGenerating(false);
-        }
-      };
-      generatePlan();
+    if (step === 'loading') {
+      // Simula a geração do plano e vai para os resultados
+      setTimeout(() => {
+        setPlan(staticPlan);
+        setStep('results');
+      }, 2500); // Mostra a tela de loading por 2.5 segundos
     }
-  }, [step, answers, isGenerating, toast]);
+  }, [step]);
 
 
   const renderStep = () => {
