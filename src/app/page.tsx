@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import type { PersonalizedWorkoutPlanInput, PersonalizedWorkoutPlanOutput } from '@/ai/flows/personalized-workout-plan';
 import { generatePersonalizedWorkoutPlan } from '@/ai/flows/personalized-workout-plan';
 import { Landing } from '@/components/quiz/Landing';
@@ -15,6 +15,9 @@ type QuizStep = 'landing' | 'questions' | 'intermediate-loading' | 'loading' | '
 
 const INTERMEDIATE_STEPS = [4, 8, 10, 12, 16];
 
+// Direct audio URL
+const CLICK_SOUND_URL = "https://www.soundjay.com/buttons/sounds/button-16.mp3";
+
 export default function Home() {
   const [step, setStep] = useState<QuizStep>('landing');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -22,14 +25,18 @@ export default function Home() {
   const [plan, setPlan] = useState<PersonalizedWorkoutPlanOutput | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const playSound = () => {
-    if (audioRef.current) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().catch(error => {
-            console.error("Audio playback failed:", error);
-        });
+    try {
+      // Create a new Audio object on each click. This is a more robust way
+      // to handle browser autoplay policies.
+      const audio = new Audio(CLICK_SOUND_URL);
+      audio.play().catch(error => {
+        // Log any errors that might occur during playback attempt
+        console.error("Audio playback failed:", error);
+      });
+    } catch (error) {
+      console.error("Failed to create audio object:", error);
     }
   };
 
@@ -129,8 +136,6 @@ export default function Home() {
 
   return (
     <main className="container mx-auto px-4 py-8 md:py-16">
-        {/* Usando um arquivo de som de uma URL pública para garantir que ele seja encontrado */}
-        <audio ref={audioRef} src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto" />
         <div className="relative mx-auto w-full max-w-[720px]">
             {renderStep()}
         </div>
