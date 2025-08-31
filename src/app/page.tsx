@@ -15,9 +15,6 @@ type QuizStep = 'landing' | 'questions' | 'intermediate-loading' | 'loading' | '
 
 const INTERMEDIATE_STEPS = [4, 8, 10, 12, 16];
 
-// Direct audio URL
-const CLICK_SOUND_URL = "https://www.soundjay.com/buttons/sounds/button-16.mp3";
-
 export default function Home() {
   const [step, setStep] = useState<QuizStep>('landing');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -26,23 +23,7 @@ export default function Home() {
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
 
-  const playSound = () => {
-    try {
-      const audio = new Audio(CLICK_SOUND_URL);
-      const promise = audio.play();
-      if (promise !== undefined) {
-        promise.catch(error => {
-          // O erro mais comum é 'NotAllowedError' quando o navegador bloqueia a reprodução.
-          console.error("Audio playback failed:", error);
-        });
-      }
-    } catch (error) {
-      console.error("Failed to create or play audio object:", error);
-    }
-  };
-
   const startQuiz = () => {
-    playSound();
     setAnswers({});
     setCurrentQuestionIndex(0);
     setPlan(null);
@@ -50,7 +31,6 @@ export default function Home() {
   };
 
   const handleAnswer = (answer: string) => {
-    playSound();
     const currentQuestion = quizQuestions[currentQuestionIndex];
     const newAnswers = { ...answers, [currentQuestion.id]: answer };
     setAnswers(newAnswers);
@@ -69,7 +49,6 @@ export default function Home() {
   
   const handleBack = () => {
     if (step !== 'questions' || currentQuestionIndex === 0) return;
-    playSound();
     
     if (INTERMEDIATE_STEPS.includes(currentQuestionIndex)) {
       setStep('questions');
