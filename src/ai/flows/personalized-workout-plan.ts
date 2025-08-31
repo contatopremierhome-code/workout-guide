@@ -101,7 +101,11 @@ const personalizedWorkoutPlanFlow = ai.defineFlow(
     outputSchema: PersonalizedWorkoutPlanOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    const response = await prompt(input);
+    const output = response.output;
+    if (!output) {
+      throw new Error('AI failed to generate a workout plan in the expected format. The response was empty.');
+    }
+    return output;
   }
 );
