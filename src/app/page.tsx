@@ -29,7 +29,7 @@ export default function Home() {
     setPlan(null);
     setStep('questions');
   };
-
+  
   const handleAnswer = (answer: string) => {
     const currentQuestion = quizQuestions[currentQuestionIndex];
     const newAnswers = { ...answers, [currentQuestion.id]: answer };
@@ -74,11 +74,10 @@ export default function Home() {
           console.error("Error generating workout plan:", error);
           toast({
             title: "An error occurred",
-            description: "We couldn't generate your plan. Please try again.",
+            description: "We couldn't generate your plan. Please check your API key and try again.",
             variant: "destructive",
           });
-          setStep('questions');
-          setCurrentQuestionIndex(0);
+          setStep('landing'); // Go to landing to avoid being stuck in a loop
         } finally {
           setIsGenerating(false);
         }
