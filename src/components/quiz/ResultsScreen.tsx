@@ -18,6 +18,10 @@ const avatars = [
 ];
 
 export function ResultsScreen({ plan }: ResultsScreenProps) {
+  const handleCheckout = (url: string) => {
+    window.location.href = url;
+  };
+
   return (
     <div className="flex flex-col items-center text-center space-y-6 md:space-y-8 animate-in fade-in duration-500">
       <div className="flex items-center justify-center">
@@ -83,8 +87,12 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
               <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Full workout library + progress trackers</span></li>
               <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Priority support</span></li>
             </ul>
-            <Button asChild size="lg" className="w-full font-bold text-lg bg-cta-green hover:bg-cta-green/90 text-white shadow-lg">
-                <a href="https://pay.hotmart.com/F101636056V?checkoutMode=10">Get Lifetime Access</a>
+            <Button
+              size="lg"
+              className="w-full font-bold text-lg bg-cta-green hover:bg-cta-green/90 text-white shadow-lg"
+              onClick={() => handleCheckout('https://pay.hotmart.com/F101636056V?checkoutMode=10')}
+            >
+              Get Lifetime Access
             </Button>
           </CardContent>
         </Card>
@@ -101,9 +109,14 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
                 <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Core workout plans</span></li>
                 <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Standard support</span></li>
             </ul>
-             <Button asChild size="lg" variant="outline" className="w-full font-bold text-lg border-2 border-primary text-primary hover:bg-primary/10 hover:text-primary">
-                <a href="https://pay.hotmart.com/R101635715E?checkoutMode=10&bid=1756499267439">Start Now</a>
-            </Button>
+             <Button
+                size="lg"
+                variant="outline"
+                className="w-full font-bold text-lg border-2 border-primary text-primary hover:bg-primary/10 hover:text-primary"
+                onClick={() => handleCheckout('https://pay.hotmart.com/R101635715E?checkoutMode=10&bid=1756499267439')}
+              >
+                Start Now
+              </Button>
           </CardContent>
         </Card>
       </div>
