@@ -24,18 +24,13 @@ export default function Home() {
   const { toast } = useToast();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    // Pre-load the audio when the component mounts
-    if (typeof window !== 'undefined') {
-        audioRef.current = new Audio('/click-sound.mp3');
-        audioRef.current.preload = 'auto';
-    }
-  }, []);
-
   const playSound = () => {
     if (audioRef.current) {
         audioRef.current.currentTime = 0;
-        audioRef.current.play().catch(error => console.error("Audio play failed:", error));
+        audioRef.current.play().catch(error => {
+            // Browsers can still sometimes block audio, so we log errors just in case.
+            console.error("Audio playback failed:", error);
+        });
     }
   };
 
@@ -68,7 +63,7 @@ export default function Home() {
   const handleBack = () => {
     if (step !== 'questions' || currentQuestionIndex === 0) return;
     playSound();
-
+    
     // Check if we need to "skip" an intermediate loading step when going back
     if (INTERMEDIATE_STEPS.includes(currentQuestionIndex)) {
       setStep('questions');
@@ -136,6 +131,8 @@ export default function Home() {
 
   return (
     <main className="container mx-auto px-4 py-8 md:py-16">
+        {/* Audio element is now part of the JSX, making it more reliable */}
+        <audio ref={audioRef} src="/click-sound.mp3" preload="auto" />
         <div className="relative mx-auto w-full max-w-[720px]">
             {renderStep()}
         </div>
