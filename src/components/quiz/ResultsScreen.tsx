@@ -1,4 +1,3 @@
-
 import type { PersonalizedWorkoutPlanOutput } from '@/ai/flows/personalized-workout-plan';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
