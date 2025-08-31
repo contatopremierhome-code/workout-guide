@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Check, Star, Lock } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
 
 interface ResultsScreenProps {
   plan: PersonalizedWorkoutPlanOutput;
@@ -85,7 +84,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
               <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Priority support</span></li>
             </ul>
             <Button asChild size="lg" className="w-full font-bold text-lg bg-cta-green hover:bg-cta-green/90 text-white shadow-lg">
-                <Link href="https://pay.hotmart.com/F101636056V?checkoutMode=10" prefetch={false}>Get Lifetime Access</Link>
+                <a href="https://pay.hotmart.com/F101636056V?checkoutMode=10">Get Lifetime Access</a>
             </Button>
           </CardContent>
         </Card>
@@ -103,7 +102,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
                 <li className="flex items-start gap-2"><Check className="h-5 w-5 mt-0.5 shrink-0 text-cta-green" /><span>Standard support</span></li>
             </ul>
              <Button asChild size="lg" variant="outline" className="w-full font-bold text-lg border-2 border-primary text-primary hover:bg-primary/10 hover:text-primary">
-                <Link href="https://pay.hotmart.com/R101635715E?checkoutMode=10&bid=1756499267439" prefetch={false}>Start Now</Link>
+                <a href="https://pay.hotmart.com/R101635715E?checkoutMode=10&bid=1756499267439">Start Now</a>
             </Button>
           </CardContent>
         </Card>
