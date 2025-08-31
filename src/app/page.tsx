@@ -28,15 +28,16 @@ export default function Home() {
 
   const playSound = () => {
     try {
-      // Create a new Audio object on each click. This is a more robust way
-      // to handle browser autoplay policies.
       const audio = new Audio(CLICK_SOUND_URL);
-      audio.play().catch(error => {
-        // Log any errors that might occur during playback attempt
-        console.error("Audio playback failed:", error);
-      });
+      const promise = audio.play();
+      if (promise !== undefined) {
+        promise.catch(error => {
+          // O erro mais comum é 'NotAllowedError' quando o navegador bloqueia a reprodução.
+          console.error("Audio playback failed:", error);
+        });
+      }
     } catch (error) {
-      console.error("Failed to create audio object:", error);
+      console.error("Failed to create or play audio object:", error);
     }
   };
 
