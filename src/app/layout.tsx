@@ -39,6 +39,16 @@ export default function RootLayout({
           async
           defer
         />
+        <Script id="utmify-pixel" strategy="afterInteractive">
+          {`
+            window.pixelId = "68b0e3fa7002bfc61281eac4";
+            var a = document.createElement("script");
+            a.setAttribute("async", "");
+            a.setAttribute("defer", "");
+            a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+            document.head.appendChild(a);
+          `}
+        </Script>
       </head>
       <body className="font-body antialiased">
         {children}
