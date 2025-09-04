@@ -87,7 +87,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
             <CheckoutButton
               size="lg"
               className="w-full font-bold text-lg bg-cta-green hover:bg-cta-green/90 text-white shadow-lg"
-              checkoutUrl='https://pay.hotmart.com/F101636056V?checkoutMode=10'
+              checkoutUrl='https://pay.hotmart.com/R101628886A?checkoutMode=10'
             >
               Get Lifetime Access
             </CheckoutButton>
@@ -110,7 +110,7 @@ export function ResultsScreen({ plan }: ResultsScreenProps) {
                 size="lg"
                 variant="outline"
                 className="w-full font-bold text-lg border-2 border-primary text-primary hover:bg-primary/10 hover:text-primary"
-                checkoutUrl='https://pay.hotmart.com/R101635715E?checkoutMode=10&bid=1756499267439'
+                checkoutUrl='https://pay.hotmart.com/M101735539G?checkoutMode=10'
               >
                 Start Now
               </CheckoutButton>
